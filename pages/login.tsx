@@ -15,8 +15,6 @@ const Login = (): JSX.Element => {
   const router = useRouter()
 
   const onSubmit: SubmitHandler<SignInRequest> = async (formdata) => {
-    console.log('data', formdata)
-
     const { data, error } = await signInRequest(formdata)
 
     if (data) {

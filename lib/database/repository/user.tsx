@@ -33,7 +33,6 @@ export const createUser = async (
     throw new Error('Email is already in use')
   }
 
-  console.log('password', password)
   const salt = crypto.randomBytes(16).toString('hex')
   const hash = crypto
     .pbkdf2Sync(password, salt, 1000, 64, 'sha512')

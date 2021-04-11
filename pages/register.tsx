@@ -22,7 +22,6 @@ const Register = (): JSX.Element => {
     const { data, error } = await signUpRequest(formdata)
 
     if (data) {
-      console.log('has data')
       router.push('/home')
     }
 

@@ -25,8 +25,6 @@ export default {
       const { _id, name, email } = user
       await Session.setLogginSession(_context.res, { _id, name, email })
 
-      console.log(user)
-
       return user
     },
     async signIn(_parent: any, _args: any, _context: any, _info: any) {
