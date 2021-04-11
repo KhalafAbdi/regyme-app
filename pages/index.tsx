@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
+import { Logo } from '../components'
+import Session from '../lib/session'
 
-const Home = () => {
+const Landing = () => {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const toggleMenu = () => {
@@ -16,7 +18,7 @@ const Home = () => {
       </Head>
       <div className="flex justify-between px-5 py-3 items-center">
         <div>
-          <span className="font-semibold text-xl">Regyme</span>
+          <Logo size="small" />
         </div>
         <button onClick={toggleMenu} className="sm:hidden">
           <svg
@@ -32,7 +34,7 @@ const Home = () => {
             />
           </svg>
         </button>
-        <div className="hidden sm:contents">
+        <div className="hidden sm:block">
           <div className="flex space-x-5">
             <Link href="/about">
               <a className="px-3 py-2 hover:bg-gray-100 rounded hover:underline">
@@ -45,7 +47,7 @@ const Home = () => {
               </a>
             </Link>
 
-            <Link href="/sign-in">
+            <Link href="/login">
               <a className="bg-gray-800 text-gray-50 px-3 py-2 hover:bg-gray-700 rounded">
                 Sign in
               </a>
@@ -71,7 +73,7 @@ const Home = () => {
               </svg>
             </button>
           </div>
-          <div className="flex flex-col space-y-1">
+          <div className="flex flex-col space-y-1 text-center">
             <Link href="/about">
               <a className="px-3 py-2 rounded">About</a>
             </Link>
@@ -79,7 +81,7 @@ const Home = () => {
               <a className="px-3 py-2 rounded">FAQ</a>
             </Link>
 
-            <Link href="/sign-in">
+            <Link href="/login">
               <div className="flex bg-gray-100 py-3 justify-center hover:bg-gray-200 rounded">
                 <a className="font-semibold">Sign in</a>
               </div>
@@ -93,7 +95,7 @@ const Home = () => {
           Keep track and improve in your all your lifs
         </h3>
         <div className="flex justify-center mt-3">
-          <Link href="/sign-in">
+          <Link href="/register">
             <a className="bg-gray-800 text-gray-50 px-3 py-2 hover:bg-gray-700 rounded">
               Get started
             </a>
@@ -104,4 +106,24 @@ const Home = () => {
   )
 }
 
-export default Home
+export async function getServerSideProps(context: any) {
+  const { req } = context
+
+  const session = await Session.getLogginSession(req)
+
+  if (session) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/home',
+      },
+      props: {},
+    }
+  }
+
+  return {
+    props: {},
+  }
+}
+
+export default Landing
