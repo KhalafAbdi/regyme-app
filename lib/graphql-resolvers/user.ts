@@ -1,9 +1,19 @@
-import { findUser, createUser } from '../database/repository/user'
+import {
+  findUserWithPassword,
+  createUser,
+  findUser,
+} from '../database/repository/user'
 import Session from '../session'
 
 export default {
   Query: {
-    async viewer() {},
+    async viewer(_parent: any, _args: any, _context: any, _info: any) {
+      const session = await Session.getLogginSession(_context.req)
+
+      if (session) {
+        return findUser(session?.email)
+      }
+    },
     async users() {},
   },
   Mutation: {
@@ -31,7 +41,7 @@ export default {
       const { email: emailInput, password: passwordInput } = _args.input
       //TODO: Validate input
 
-      const user = await findUser(emailInput, passwordInput)
+      const user = await findUserWithPassword(emailInput, passwordInput)
 
       if (!user) {
         throw new Error('Invalid email and password combination')
