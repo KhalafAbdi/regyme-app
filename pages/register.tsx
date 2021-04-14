@@ -28,16 +28,16 @@ const Register = (): JSX.Element => {
     }
 
     if (errors) {
-      console.log('cant sign up for some reason')
+      console.error(errors)
     }
   }
 
   const onGoogleSignUp = () => {
-    console.log('Sign Up with google')
+    console.log('TODO: Sign Up with google')
   }
 
   const onFacebookSignUp = () => {
-    console.log('Sign Up with facebook')
+    console.log('TODO: Sign Up with facebook')
   }
 
   return (

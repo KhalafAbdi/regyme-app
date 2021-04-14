@@ -11,8 +11,6 @@ export const findUserWithPassword = async (
 
   const user = (await User.findOne({ email })) as UserType
 
-  console.log(email)
-
   if (user) {
     const passwordMatched = await validatePassword(user, password)
 

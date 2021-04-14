@@ -60,8 +60,6 @@ const PrivateMenu = () => {
   const router = useRouter()
 
   const handleSignOut = async () => {
-    console.log('signout')
-
     const { data, errors } = await signOutRequest()
 
     if (data) {
@@ -69,7 +67,7 @@ const PrivateMenu = () => {
     }
 
     if (errors) {
-      console.log("Can't log out for some reason")
+      console.error(errors)
     }
   }
 

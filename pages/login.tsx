@@ -15,8 +15,6 @@ const Login = (): JSX.Element => {
   const router = useRouter()
 
   const onSubmit: SubmitHandler<SignInRequest> = async (formdata) => {
-    console.log(formdata)
-
     const { data, errors } = await signInRequest(formdata)
 
     if (data) {
@@ -24,16 +22,16 @@ const Login = (): JSX.Element => {
     }
 
     if (errors) {
-      console.log(errors)
+      console.error(errors)
     }
   }
 
   const onGoogleSignIn = () => {
-    console.log('Sign in with google')
+    console.log('TODO: Sign in with google')
   }
 
   const onFacebookSignIn = () => {
-    console.log('Sign in with facebook')
+    console.log('TODO: Sign in with facebook')
   }
 
   return (

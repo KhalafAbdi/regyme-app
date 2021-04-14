@@ -4,8 +4,6 @@ import Header from '../components/Header'
 import { UserContext } from '../context/userContext'
 
 const Home = (session: any): JSX.Element => {
-  console.log(session)
-
   return (
     <UserContext.Provider value={session}>
       <Header />
