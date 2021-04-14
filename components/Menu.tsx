@@ -10,17 +10,6 @@ type MenuProps = {
 }
 
 const Menu = ({ closeMenu }: MenuProps) => {
-  const signOutRequest = useSignOut()
-  const router = useRouter()
-
-  const handleSignOut = async () => {
-    const { data, error } = await signOutRequest()
-
-    if (data) {
-      router.push('/home')
-    }
-  }
-
   return (
     <div className="absolute top-0 left-0 w-10/12 bg-white shadow-lg sm:shadow-none h-screen sm:static sm:w-full sm:h-auto sm:bg-transparent ">
       {closeMenu && (
@@ -58,24 +47,40 @@ export default Menu
 
 const MenuItems = () => {
   const value = useContext(UserContext)
-  return <PublicMenu />
+
+  return (
+    <ul className="flex flex-col w-full space-y-2 sm:flex-row items-center sm:space-x-3 sm:space-y-0 sm:w-auto">
+      {'session' in value ? <PrivateMenu /> : <PublicMenu />}
+    </ul>
+  )
 }
 
-const getPrivateMenu = (handleSignOut: Function) => {
+const PrivateMenu = () => {
+  const signOutRequest = useSignOut()
+  const router = useRouter()
+
+  const handleSignOut = async () => {
+    const { data, error } = await signOutRequest()
+
+    if (data) {
+      router.push('/home')
+    }
+  }
+
   const privateMenuList = [
     { text: 'Plan', url: '/plans' },
     { text: 'Workout', url: '/workouts' },
     { text: 'Exercises', url: '/exercises' },
-    {
-      icon: 'icon',
-      children: [
-        { text: 'Profile', url: '/profile' },
-        { text: 'Settings', url: '/profile' },
-        { text: 'Profile', url: '/profile' },
-        { button: 'Sign out', fn: handleSignOut },
-      ],
-    },
+    { button: 'Sign out', fn: handleSignOut },
   ]
+
+  return (
+    <>
+      {privateMenuList.map((item, index) => (
+        <MenuLink key={index} item={item} />
+      ))}
+    </>
+  )
 }
 
 const PublicMenu = () => {
@@ -86,10 +91,10 @@ const PublicMenu = () => {
   ]
 
   return (
-    <ul className="flex flex-col w-full space-y-2 sm:flex-row items-center sm:space-x-3 sm:space-y-0 sm:w-auto">
+    <>
       {publicMenuList.map((item, index) => (
         <MenuLink key={index} item={item} />
       ))}
-    </ul>
+    </>
   )
 }
