@@ -19,13 +19,17 @@ const Register = (): JSX.Element => {
   const router = useRouter()
 
   const onSubmit: SubmitHandler<SignUpRequest> = async (formdata) => {
-    const { data, error } = await signUpRequest(formdata)
+    console.log(formState)
+
+    const { data, errors } = await signUpRequest(formdata)
 
     if (data) {
       router.push('/home')
     }
 
-    //TODO: Handle error
+    if (errors) {
+      console.log('cant sign up for some reason')
+    }
   }
 
   const onGoogleSignUp = () => {

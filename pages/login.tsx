@@ -15,13 +15,17 @@ const Login = (): JSX.Element => {
   const router = useRouter()
 
   const onSubmit: SubmitHandler<SignInRequest> = async (formdata) => {
-    const { data, error } = await signInRequest(formdata)
+    console.log(formdata)
+
+    const { data, errors } = await signInRequest(formdata)
 
     if (data) {
       router.push('/home')
     }
 
-    //TODO: Handle error
+    if (errors) {
+      console.log(errors)
+    }
   }
 
   const onGoogleSignIn = () => {
