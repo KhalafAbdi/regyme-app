@@ -3,13 +3,6 @@ import dbConnect from '../connect'
 import User from '../schema/user'
 import { UserType } from '../../types'
 
-export const findUser = async (email: String) => {
-  await dbConnect()
-
-  const user = (await User.findOne({ email })) as UserType
-  return user
-}
-
 export const findUserWithPassword = async (
   email: string,
   password: string

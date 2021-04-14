@@ -1,20 +1,16 @@
-import useSignout from '../hooks/use-sign-out'
 import Session from '../lib/session'
-import { useRouter } from 'next/router'
+import Header from '../components/Header'
 
-const Home = (): JSX.Element => {
-  const router = useRouter()
-  const signInRequest = useSignout()
+import { UserContext } from '../context/userContext'
 
-  const handleSignOut = async () => {
-    const { data, error } = await signInRequest()
+const Home = (session: any): JSX.Element => {
+  console.log(session)
 
-    if (data) {
-      router.push('/home')
-    }
-  }
-
-  return <button onClick={handleSignOut}>button</button>
+  return (
+    <UserContext.Provider value={session}>
+      <Header />
+    </UserContext.Provider>
+  )
 }
 
 export async function getServerSideProps(context: any) {
@@ -31,7 +27,6 @@ export async function getServerSideProps(context: any) {
       props: {},
     }
   }
-
   return {
     props: { session },
   }

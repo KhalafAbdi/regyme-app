@@ -20,7 +20,6 @@ export default gql`
   }
 
   extend type Query {
-    viewer: User
     users: [User]!
     user(id: ID!): User!
   }

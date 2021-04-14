@@ -1,20 +1,10 @@
-import {
-  findUserWithPassword,
-  createUser,
-  findUser,
-} from '../database/repository/user'
+import { findUserWithPassword, createUser } from '../database/repository/user'
 import Session from '../session'
 
 export default {
   Query: {
-    async viewer(_parent: any, _args: any, _context: any, _info: any) {
-      const session = await Session.getLogginSession(_context.req)
-
-      if (session) {
-        return findUser(session?.email)
-      }
-    },
     async users() {},
+    async user() {},
   },
   Mutation: {
     async signUp(_parent: any, _args: any, _context: any, _info: any) {
