@@ -12,9 +12,18 @@ type PrivatePageLayoutProps = {
 const PrivatePageLayout = ({ children }: PrivatePageLayoutProps) => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false)
   const signOut = useSignOut()
+  const router = useRouter()
 
   const toggleSideBar = () => {
     setIsSideBarOpen((prev) => !prev)
+  }
+
+  const handleSignOut = async () => {
+    const { data, error } = await signOut()
+
+    if (data) {
+      router.push('/')
+    }
   }
 
   return (
@@ -164,7 +173,7 @@ const PrivatePageLayout = ({ children }: PrivatePageLayoutProps) => {
               </>
             </SideBarLink>
             <button
-              onClick={signOut}
+              onClick={handleSignOut}
               className="px-5 py-2 w-full text-left text-gray-800 hover:bg-gray-100 flex"
             >
               <span className="h-6 w-6 mr-2 text-gray-400">
