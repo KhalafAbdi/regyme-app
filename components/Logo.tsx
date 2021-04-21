@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind'
+import Link from 'next/link'
 
 type LogoProps = {
   size?: string
@@ -21,7 +22,11 @@ const Logo = ({ size }: LogoProps): JSX.Element => {
     big: size === 'big',
   })
 
-  return <span className={className}>Regyme</span>
+  return (
+    <Link href="/">
+      <a className={className}>Regyme</a>
+    </Link>
+  )
 }
 
 export default Logo
