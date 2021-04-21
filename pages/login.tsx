@@ -18,7 +18,7 @@ const Login = (): JSX.Element => {
     const { data, error } = await signInRequest(formdata)
 
     if (data) {
-      router.push('/home')
+      router.push('/dashboard')
     }
 
     //TODO: Handle error
@@ -110,7 +110,7 @@ export async function getServerSideProps(context: any) {
     return {
       redirect: {
         permanent: false,
-        destination: '/home',
+        destination: '/dashboard',
       },
       props: {},
     }
