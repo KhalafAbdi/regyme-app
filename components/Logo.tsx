@@ -6,7 +6,7 @@ type LogoProps = {
 }
 
 const styles = {
-  base: 'font-semibold',
+  base: 'font-semibold leading-none',
   small: 'text-xl',
   medium: 'text-2xl',
   big: 'text-3xl',
