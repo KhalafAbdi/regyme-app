@@ -29,7 +29,7 @@ const PrivatePageLayout = ({ children }: PrivatePageLayoutProps) => {
   return (
     <div className="flex h-screen">
       <div
-        className={`shadow-sm flex flex-col bg-gradient-to-br from-gray-800 to-gray-700 flex-shrink-0 ${
+        className={`shadow-sm flex flex-col bg-gradient-to-br from-gray-800 to-gray-700 flex-shrink-0 absolute top-0 left-0 h-full ${
           isSideBarOpen ? 'w-48' : ''
         }`}
       >
@@ -197,7 +197,7 @@ const PrivatePageLayout = ({ children }: PrivatePageLayoutProps) => {
           </ul>
         </div>
       </div>
-      <div className="flex-1">{children}</div>
+      <div className="flex-1 ml-[52px]">{children}</div>
     </div>
   )
 }
