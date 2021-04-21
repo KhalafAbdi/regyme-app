@@ -3,7 +3,7 @@ import PrivatePageLayout from '../../components/layouts/PrivatePageLayout'
 const Exercises = () => {
   return (
     <PrivatePageLayout>
-      <div className="px-5 min-w-[380px]">
+      <div className="px-5 max-w-2xl">
         <div className="h-[63.6px] pt-5 flex flex-col justify-end">
           <div className="border-b-2 border-gray-200 flex items-center">
             <svg
