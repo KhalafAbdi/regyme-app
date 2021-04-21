@@ -2,10 +2,10 @@ import { gql } from '@apollo/client'
 
 export default gql`
   type User {
-    _id: ID!
+    _id: ID
     name: String!
     email: String!
-    createdAt: String!
+    createdAt: String
   }
 
   input SignUpInput {
@@ -20,9 +20,9 @@ export default gql`
   }
 
   extend type Query {
-    viewer: User
     users: [User]!
     user(id: ID!): User!
+    viewer: User
   }
 
   extend type Mutation {

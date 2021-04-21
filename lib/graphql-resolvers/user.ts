@@ -3,8 +3,19 @@ import Session from '../session'
 
 export default {
   Query: {
-    async viewer() {},
     async users() {},
+    async user() {},
+    async viewer(_parent: any, _args: any, _context: any, _info: any) {
+      const { req } = _context
+
+      const session = await Session.getLogginSession(req)
+
+      if (session) {
+        return { name: session.name, email: session.email }
+      }
+
+      return {}
+    },
   },
   Mutation: {
     async signUp(_parent: any, _args: any, _context: any, _info: any) {
