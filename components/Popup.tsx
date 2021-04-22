@@ -24,7 +24,7 @@ const Popup = ({
       <div className="mt-24 bg-white w-11/12 mx-auto flex flex-col rounded-sm max-w-sm">
         <div className="flex justify-between bg-gray-800 bg-opacity-5">
           <div className="px-3 py-3 flex flex-col leading-none">
-            <span className="text-lg text-gray-800">{type}</span>
+            <span className="text-gray-800 text-base">{type}</span>
             <span className="font-semibold text-3xl">{text}</span>
           </div>
           <button className="px-3 py-3 flex items-start" onClick={onCancel}>
