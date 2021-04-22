@@ -11,7 +11,7 @@ type InputProps = {
 }
 
 const inputClasses = classNames.bind({
-  base: 'mt-1 bg-gray-50 h-10 border border-gray-200 rounded px-4',
+  base: 'mt-1 bg-gray-50 h-10 rounded px-4',
   error: 'border-red-600',
 })
 
@@ -39,7 +39,7 @@ const TextInput = ({
   })
 
   return (
-    <div className="flex flex-col mt-5">
+    <div className="flex flex-col">
       <div className="flex justify-between">
         <span className={labelClassName}>{label}</span>
         {children}
