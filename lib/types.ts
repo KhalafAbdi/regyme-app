@@ -1,25 +1,27 @@
 export type SessionType = {
-  _id: String
-  name: String
-  email: String
+  _id: string
+  name: string
+  email: string
 }
 
 export type UserType = {
-  _id: String
-  name: String
-  email: String
-  hash: String
-  salt: String
+  _id: string
+  name: string
+  email: string
+  hash: string
+  salt: string
   createdAt: Date
 }
 
 export type SignInRequest = {
-  email: String
-  password: String
+  email: string
+  password: string
 }
 
 export type SignUpRequest = {
-  name: String
-  email: String
-  password: String
+  name: string
+  email: string
+  password: string
+}
+
 }
