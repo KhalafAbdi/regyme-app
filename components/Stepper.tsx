@@ -17,7 +17,7 @@ const Stepper = ({ value, onChange }: StepperProps) => {
   return (
     <div className="p-1 bg-white shadow-sm flex flex-col">
       <button
-        className="p-1 bg-gray-50 text-gray-800 shadow-sm"
+        className="p-1 bg-gray-800 bg-opacity-5 text-gray-800 shadow-sm"
         onClick={increment}
       >
         <svg
@@ -37,7 +37,7 @@ const Stepper = ({ value, onChange }: StepperProps) => {
         <span>{value}</span>
       </div>
       <button
-        className="p-1 bg-gray-50 text-gray-800 shadow-sm"
+        className="p-1 bg-gray-800 bg-opacity-5 text-gray-800 shadow-sm"
         onClick={decrement}
       >
         <svg

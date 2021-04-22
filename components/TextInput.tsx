@@ -11,7 +11,7 @@ type InputProps = {
 }
 
 const inputClasses = classNames.bind({
-  base: 'mt-1 bg-gray-50 h-10 rounded px-4',
+  base: 'mt-1 bg-gray-800 h-10 rounded-sm px-4 bg-opacity-5',
   error: 'border-red-600',
 })
 

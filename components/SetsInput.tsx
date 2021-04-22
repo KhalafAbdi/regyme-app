@@ -28,7 +28,7 @@ const Sets = ({ sets, onSetsChange, onRepsChange }: SetsProps) => {
     return (
       <div className="flex space-x-1">
         <button
-          className="mt-1 px-2 py-1 bg-gray-50 shadow-sm"
+          className="mt-1 px-2 py-1 bg-gray-800 bg-opacity-5"
           onClick={addSet}
         >
           <svg
@@ -45,7 +45,7 @@ const Sets = ({ sets, onSetsChange, onRepsChange }: SetsProps) => {
           </svg>
         </button>
         <button
-          className="mt-1 px-2 py-1 bg-gray-50 shadow-sm"
+          className="mt-1 px-2 py-1 bg-gray-800 bg-opacity-5"
           onClick={removeSet}
         >
           <svg
@@ -68,7 +68,7 @@ const Sets = ({ sets, onSetsChange, onRepsChange }: SetsProps) => {
     <div>
       <span className="font-semibold">Sets</span>
 
-      <div className="p-2 bg-gray-50 flex justify-center space-x-3">
+      <div className="p-2 bg-gray-800 bg-opacity-5 flex justify-center space-x-3 rounded-sm">
         {sets.map((_, index) => {
           return (
             <Stepper
