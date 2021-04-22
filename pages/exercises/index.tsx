@@ -4,11 +4,16 @@ import Popup from '../../components/Popup'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { TextInput } from '../../components'
 import SetsInput from '../../components/SetsInput'
+import { useExercises, useCreateExercise } from '../../hooks/use-exercise'
+import { ExerciseType } from '../../lib/types'
+import Button from '../../components/Button'
 
 const Exercises = () => {
   const { register, handleSubmit, formState } = useForm<any>()
   const [isPopupOpen, setIsPopupOpen] = useState(false)
   const [sets, setSets] = useState([8, 8, 8])
+  const { exercises, error } = useExercises()
+  const createExerciseRequest = useCreateExercise()
 
   const openPopup = () => {
     if (!isPopupOpen) {
@@ -30,8 +35,10 @@ const Exercises = () => {
       sets,
     }
 
-    console.log(payload)
-    closePopup()
+    const wasCreated = await createExerciseRequest(payload)
+    if (wasCreated) {
+      closePopup()
+    }
   }
 
   const onCancel = () => {
@@ -98,30 +105,26 @@ const Exercises = () => {
           </div>
           <div className="mt-5 flex justify-between items-end">
             <span className="text-xl leading-none">Exercises</span>
-            <button
-              onClick={openPopup}
-              className="bg-gray-800 text-white px-3 py-1 rounded-sm"
-            >
-              Create
-            </button>
+            <Button label="Create" onClick={openPopup} type="primary" />
           </div>
           <div className="mt-5 flex flex-col space-y-1 text-xs">
-            <div className="bg-white px-3 py-2 flex justify-between">
-              <span>Name</span>
-              <span className="text-gray-400">Reps</span>
-            </div>
-            <div className="bg-white px-3 py-2 flex justify-between">
-              <span>Name</span>
-              <span className="text-gray-400">Reps</span>
-            </div>
-            <div className="bg-white px-3 py-2 flex justify-between">
-              <span>Name</span>
-              <span className="text-gray-400">Reps</span>
-            </div>
-            <div className="bg-white px-3 py-2 flex justify-between">
-              <span>Name</span>
-              <span className="text-gray-400">Reps</span>
-            </div>
+            {exercises && exercises.length > 0 ? (
+              exercises.map((exercise: ExerciseType) => {
+                return (
+                  <div
+                    key={exercise._id}
+                    className="bg-white px-3 py-2 flex justify-between"
+                  >
+                    <span>{exercise.name}</span>
+                    <span className="text-gray-400">
+                      {exercise.sets.length} Sets
+                    </span>
+                  </div>
+                )
+              })
+            ) : (
+              <div>Nothing</div>
+            )}
           </div>
         </div>
         {isPopupOpen && (
