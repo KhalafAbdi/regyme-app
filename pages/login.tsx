@@ -3,7 +3,7 @@ import Logo from '../components/Logo'
 import TextInput from '../components/TextInput'
 import Link from 'next/link'
 
-import useSignIn from '../hooks/use-sign-in'
+import { useSignIn } from '../hooks/useAuthorization'
 import { SignInRequest } from '../lib/types'
 import { useRouter } from 'next/router'
 

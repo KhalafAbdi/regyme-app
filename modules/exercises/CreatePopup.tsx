@@ -1,7 +1,7 @@
 import Popup from '../../components/Popup'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useState } from 'react'
-import { useCreateExercise } from '../../hooks/use-exercise'
+import { useCreateExercise } from '../../hooks/useExercises'
 import TextInput from '../../components/TextInput'
 import SetsInput from '../../components/SetsInput'
 

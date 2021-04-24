@@ -4,7 +4,7 @@ import TextInput from '../components/TextInput'
 import Link from 'next/link'
 
 import { useRouter } from 'next/router'
-import useSignUp from '../hooks/use-sign-up'
+import { useSignUp } from '../hooks/useAuthorization'
 import { SignUpRequest } from '../lib/types'
 
 import {

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import useSignOut from '../hooks/use-sign-out'
+import { useSignOut } from '../hooks/useAuthorization'
 import { useRouter } from 'next/router'
 import classNames from 'classnames/bind'
 

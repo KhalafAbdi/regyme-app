@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useExercises } from '../../hooks/use-exercise'
+import { useExercises } from '../../hooks/useExercises'
 import { ExerciseType } from '../../lib/types'
 
 interface Props {

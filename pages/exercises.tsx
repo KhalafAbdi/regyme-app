@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import PrivatePageLayout from '../layouts/PrivatePageLayout'
 import Button from '../components/Button'
 
-import SearchController from '../modules/exercises/SearchController'
+import SearchInput from '../components/SearchInput'
 import ExerciseList from '../modules/exercises/List'
 import CreateExercisePopup from '../modules/exercises/CreatePopup'
 
@@ -32,7 +32,7 @@ const Exercises: React.FC = () => {
     <PrivatePageLayout>
       <div>
         <div className="px-5 max-w-2xl">
-          <SearchController value={rawText} onChange={setText} />
+          <SearchInput value={rawText} onChange={setText} />
           <div className="mt-5 flex justify-between items-end">
             <span className="text-xl leading-none">Exercises</span>
             <Button label="Create" onClick={openPopup} type="primary" />
