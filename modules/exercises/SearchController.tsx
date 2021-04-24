@@ -1,15 +1,15 @@
-type SearchProps = {
+interface Props {
   value: string
-  onChange: Function
+  onChange: (value: string) => void
 }
 
-const SearchController = ({ value, onChange }: SearchProps) => {
+const SearchController: React.FC<Props> = ({ value, onChange }) => {
   const handleOnChange = (e: any) => {
     onChange(e.target.value)
   }
 
   return (
-    <div className="h-[63.6px] pt-5 flex flex-col justify-end">
+    <div className="h-[66px] pt-5 flex flex-col justify-end">
       <div className="border-b-2 border-gray-200 flex items-center">
         <svg
           className="w-5 h-5 mr-2"

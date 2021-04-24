@@ -1,14 +1,15 @@
-import { useState } from 'react'
-import PrivatePageLayout from '../../components/layouts/PrivatePageLayout'
-import Button from '../../components/Button'
+import React, { useState } from 'react'
 
-import SearchController from '../../modules/exercises/SearchController'
-import ExerciseList from '../../modules/exercises/List'
-import CreateExercisePopup from '../../modules/exercises/CreatePopup'
+import PrivatePageLayout from '../layouts/PrivatePageLayout'
+import Button from '../components/Button'
+
+import SearchController from '../modules/exercises/SearchController'
+import ExerciseList from '../modules/exercises/List'
+import CreateExercisePopup from '../modules/exercises/CreatePopup'
 
 import { useDebounce } from 'use-debounce'
 
-const Exercises = () => {
+const Exercises: React.FC = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false)
   const [rawText, setText] = useState('')
   const [text] = useDebounce(rawText, 300)

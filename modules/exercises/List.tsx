@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react'
 import { useExercises } from '../../hooks/use-exercise'
 import { ExerciseType } from '../../lib/types'
 
-type ListProps = {
+interface Props {
   searchInput: string
 }
 
-const List = ({ searchInput }: ListProps) => {
+const List: React.FC<Props> = ({ searchInput }) => {
   const { exercises, error } = useExercises()
   const [filteredList, setFilteredList] = useState([])
 

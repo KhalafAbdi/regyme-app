@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import PublicPageLayout from '../components/layouts/PublicPageLayout'
+import PublicPageLayout from '../layouts/PublicPageLayout'
 
-const Landing = () => {
+const Landing: React.FC = () => {
   return (
     <PublicPageLayout>
       <div className="px-5 py-3 mt-28 text-center">

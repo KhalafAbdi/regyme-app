@@ -1,19 +1,19 @@
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { Logo, TextInput } from '../components'
+import Logo from '../components/Logo'
+import TextInput from '../components/TextInput'
 import Link from 'next/link'
 
 import { useRouter } from 'next/router'
 import useSignUp from '../hooks/use-sign-up'
 import { SignUpRequest } from '../lib/types'
-import Session from '../lib/session'
 
 import {
   nameRequirements,
   emailRequirements,
   passwordRequirements,
-} from '../util/validation'
+} from '../util/client-validation'
 
-const Register = (): JSX.Element => {
+const Register: React.FC = () => {
   const { register, handleSubmit, formState } = useForm<SignUpRequest>()
   const signUpRequest = useSignUp()
   const router = useRouter()
@@ -37,7 +37,7 @@ const Register = (): JSX.Element => {
   }
 
   return (
-    <div className="px-5 mt-12">
+    <div className="px-5 mt-24">
       <div className="flex">
         <div className="flex flex-col w-full items-center">
           <div className="w-full sm:w-[450px]">
@@ -108,26 +108,6 @@ const Register = (): JSX.Element => {
       </div>
     </div>
   )
-}
-
-export async function getServerSideProps(context: any) {
-  const { req } = context
-
-  const session = await Session.getLogginSession(req)
-
-  if (session) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/dashboard',
-      },
-      props: {},
-    }
-  }
-
-  return {
-    props: {},
-  }
 }
 
 export default Register

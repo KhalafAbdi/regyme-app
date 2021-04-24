@@ -1,7 +1,7 @@
-import PrivatePageLayout from '../components/layouts/PrivatePageLayout'
+import PrivatePageLayout from '../layouts/PrivatePageLayout'
 import useViewer from '../hooks/use-viewer'
 
-const Dashboard = () => {
+const Dashboard: React.FC = () => {
   const { data, error } = useViewer()
 
   return (

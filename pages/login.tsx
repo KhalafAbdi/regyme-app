@@ -1,15 +1,18 @@
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { Logo, TextInput } from '../components'
+import Logo from '../components/Logo'
+import TextInput from '../components/TextInput'
 import Link from 'next/link'
 
 import useSignIn from '../hooks/use-sign-in'
 import { SignInRequest } from '../lib/types'
 import { useRouter } from 'next/router'
-import Session from '../lib/session'
 
-import { emailRequirements, passwordRequirements } from '../util/validation'
+import {
+  emailRequirements,
+  passwordRequirements,
+} from '../util/client-validation'
 
-const Login = (): JSX.Element => {
+const Login: React.FC = () => {
   const { register, handleSubmit, formState } = useForm<SignInRequest>()
   const signInRequest = useSignIn()
   const router = useRouter()
@@ -33,7 +36,7 @@ const Login = (): JSX.Element => {
   }
 
   return (
-    <div className="px-5 mt-12">
+    <div className="px-5 mt-24">
       <div className="flex">
         <div className="flex flex-col w-full items-center">
           <div className="w-full sm:w-[450px]">
@@ -99,26 +102,6 @@ const Login = (): JSX.Element => {
       </div>
     </div>
   )
-}
-
-export async function getServerSideProps(context: any) {
-  const { req } = context
-
-  const session = await Session.getLogginSession(req)
-
-  if (session) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/dashboard',
-      },
-      props: {},
-    }
-  }
-
-  return {
-    props: {},
-  }
 }
 
 export default Login

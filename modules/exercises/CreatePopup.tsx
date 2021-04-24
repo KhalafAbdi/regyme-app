@@ -2,14 +2,14 @@ import Popup from '../../components/Popup'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useState } from 'react'
 import { useCreateExercise } from '../../hooks/use-exercise'
-import { TextInput } from '../../components'
+import TextInput from '../../components/TextInput'
 import SetsInput from '../../components/SetsInput'
 
-type CreatePopup = {
-  onClosePopup: Function
+interface Props {
+  onClosePopup: () => void
 }
 
-const CreatePopup = ({ onClosePopup }: CreatePopup) => {
+const CreatePopup: React.FC<Props> = ({ onClosePopup }) => {
   const { register, handleSubmit, formState } = useForm<any>()
   const [sets, setSets] = useState([8, 8, 8])
   const createExerciseRequest = useCreateExercise()
