@@ -5,7 +5,7 @@ import Button from '../components/Button'
 
 import SearchInput from '../components/SearchInput'
 import ExerciseList from '../modules/exercises/List'
-import CreateExercisePopup from '../modules/exercises/CreatePopup'
+import CreatePopup from '../modules/exercises/Popup'
 
 import { useDebounce } from 'use-debounce'
 
@@ -39,7 +39,7 @@ const Exercises: React.FC = () => {
           </div>
           <ExerciseList searchInput={text} />
         </div>
-        {isPopupOpen && <CreateExercisePopup onClosePopup={closePopup} />}
+        {isPopupOpen && <CreatePopup onClosePopup={closePopup} />}
       </div>
     </PrivatePageLayout>
   )
