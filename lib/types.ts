@@ -51,3 +51,8 @@ export interface WorkoutRequest {
   exercises: Array<string>
   pictureUrl: string
 }
+
+export interface SignedUrlReq {
+  filename: string
+  filetype: string
+}
