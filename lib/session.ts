@@ -26,6 +26,15 @@ const getLogginSession = async (req: NextApiRequest) => {
   return session
 }
 
+const getUserId = async (req) => {
+  const session = await getLogginSession(req)
+
+  if (!session) {
+    throw new Error('Not logged in')
+  }
+  return session._id
+}
+
 const setLogginSession = async (res: NextApiResponse, session: SessionType) => {
   const createdAt = Date.now()
 
@@ -44,6 +53,7 @@ const dumpLogginSession = async (req: NextApiRequest) => {
 
 export default {
   getLogginSession,
+  getUserId,
   setLogginSession,
   clearLogginSession,
   dumpLogginSession,
