@@ -21,7 +21,7 @@ const Popup = ({
 }: PopupProps) => {
   return (
     <div className="absolute top-0 left-0 bg-gray-800 bg-opacity-25 w-full h-full">
-      <div className="mt-24 bg-white w-11/12 mx-auto flex flex-col rounded-sm max-w-sm">
+      <div className="mt-5 bg-white w-11/12 mx-auto flex flex-col rounded-sm max-w-sm">
         <div className="flex justify-between bg-gray-800 bg-opacity-5">
           <div className="px-3 py-3 flex flex-col leading-none">
             <span className="text-gray-800 text-base">{type}</span>
