@@ -36,3 +36,18 @@ export type ExerciseRequest = {
   name: string
   sets: Array<number>
 }
+
+export interface Workout {
+  _id: string
+  name: string
+  createdBy?: string
+  createdAt?: Date
+  exercises: Array<string>
+  pictureUrl: string
+}
+
+export interface WorkoutRequest {
+  name: string
+  exercises: Array<string>
+  pictureUrl: string
+}
