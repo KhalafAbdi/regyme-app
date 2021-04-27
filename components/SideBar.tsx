@@ -16,7 +16,7 @@ import SideBarLink from './SideBarLink'
 
 const cx = classNames.bind({
   base:
-    'shadow-sm flex flex-col bg-gradient-to-br from-gray-800 to-gray-700 flex-shrink-0 absolute top-0 left-0 h-full',
+    'shadow-sm flex flex-col bg-gradient-to-br from-gray-800 to-gray-700 flex-shrink-0 absolute top-0 left-0 h-full fixed',
   expanded: 'w-48',
 })
 
