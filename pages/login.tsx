@@ -28,11 +28,11 @@ const Login: React.FC = () => {
   }
 
   const onGoogleSignIn = () => {
-    console.log('Sign in with google')
+    //TODO
   }
 
   const onFacebookSignIn = () => {
-    console.log('Sign in with facebook')
+    //TODO
   }
 
   return (

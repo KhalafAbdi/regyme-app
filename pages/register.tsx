@@ -29,11 +29,11 @@ const Register: React.FC = () => {
   }
 
   const onGoogleSignUp = () => {
-    console.log('Sign Up with google')
+    //TODO
   }
 
   const onFacebookSignUp = () => {
-    console.log('Sign Up with facebook')
+    //TODO
   }
 
   return (

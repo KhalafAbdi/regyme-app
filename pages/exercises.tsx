@@ -16,14 +16,12 @@ const Exercises: React.FC = () => {
 
   const openPopup = () => {
     if (!isPopupOpen) {
-      console.log('opening popup')
       setIsPopupOpen(true)
     }
   }
 
   const closePopup = () => {
     if (isPopupOpen) {
-      console.log('closing popup')
       setIsPopupOpen(false)
     }
   }
