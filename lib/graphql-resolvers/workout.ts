@@ -32,7 +32,7 @@ export default {
       const { name, exercises, pictureUrl }: WorkoutRequest = _args
       const userId = await Session.getUserId(_context.req)
 
-      return createWorkout(userId, name, exercises, pictureUrl)
+      return await createWorkout(userId, name, exercises, pictureUrl)
     },
   },
 }
