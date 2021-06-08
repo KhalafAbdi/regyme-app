@@ -2,13 +2,13 @@ import Image from 'next/image'
 import { useState } from 'react'
 
 interface ImageUploadProps {
-  register: (field: string) => any
+  onImageChange: (imageData: File) => void
 }
 
-const ImageUpload: React.FC<ImageUploadProps> = ({ register }) => {
-  const [image, setImage] = useState<string>(null)
+const ImageUpload: React.FC<ImageUploadProps> = ({ onImageChange }) => {
   const [isUploaded, setIsUploaded] = useState<Boolean>(false)
   const [imageName, setImageName] = useState<String>('')
+  const [image, setImage] = useState<string>(null)
 
   const handleImagechange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const input = e.target as HTMLInputElement
@@ -16,7 +16,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ register }) => {
     if (input.files && input.files[0]) {
       let reader: FileReader = new FileReader()
 
-      console.log('0', input.files[0])
+      onImageChange(input.files[0])
 
       setImageName(input.files[0].name)
 
@@ -31,6 +31,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ register }) => {
 
   const handleImageRemoval = (): void => {
     setImage(null)
+    onImageChange(null)
     setIsUploaded(false)
     setImageName('')
   }
@@ -44,7 +45,6 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ register }) => {
           type="file"
           accept="image/*"
           name="picture"
-          {...register('picture')}
           className="hidden"
           onChange={handleImagechange}
         />
