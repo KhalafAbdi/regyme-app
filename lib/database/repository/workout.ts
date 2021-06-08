@@ -34,5 +34,17 @@ export const createWorkout = async (
 ) => {
   await dbConnect()
 
-  return null
+  const workoutWithNameExists = await WorkoutSchema.findOne({ name })
+
+  if (workoutWithNameExists) {
+    throw new Error('You already have an Workout called that!')
+  }
+  const workout = new WorkoutSchema({
+    name,
+    exercises,
+    pictureUrl,
+    createdBy: userId,
+  })
+
+  return await workout.save()
 }
