@@ -27,16 +27,14 @@ const CreatePopup: React.FC<Props> = ({ onClosePopup }) => {
   }
 
   const onCancel = () => {
-    console.log('cancle')
     onClosePopup()
   }
 
   const onReset = () => {
-    console.log('Reset')
+    //TODO
   }
 
   const onRepsChange = (index: number) => {
-    console.log('sets changed')
     return (value: number) => {
       const newArr = [...sets]
       newArr[index] = value
