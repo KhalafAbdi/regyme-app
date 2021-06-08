@@ -10,8 +10,7 @@ export const useSignedUrl = () => {
     }
 
     const { data } = await poster(mutation)
-
-    return data
+    return data.signS3
   }
 }
 
