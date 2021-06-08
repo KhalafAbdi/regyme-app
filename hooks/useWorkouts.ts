@@ -14,7 +14,7 @@ export const useCreateWorkout = () => {
   return async (payload: WorkoutRequest) => {
     const mutation = {
       query:
-        'mutation CreateExerciseMutation($name: String!, $sets: [Int]!) { createExercise(input: { name: $name, sets: $sets }) { _id name sets } }',
+        'mutation CreateWorkoutMutation($name: String!, $exercises: [ID!]!, $pictureUrl: String!) { createWorkout(name: $name, exercises: $exercises, pictureUrl: $pictureUrl) { _id name exercises pictureUrl } }',
       variables: payload,
     }
 
