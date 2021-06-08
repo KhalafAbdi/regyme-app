@@ -19,16 +19,15 @@ const CreatePopup: React.FC<Props> = ({ onClosePopup }) => {
   const createWorkout = useCreateWorkout()
   const createSignedUrl = useSignedUrl()
   const { exercises } = useExercises()
+  const [imageData, setImageData] = useState<any>(null)
 
   const onSave: SubmitHandler<any> = async (formData) => {
-    console.log(formData)
-
     const { signeRequest, url } = await createSignedUrl({
-      filename: formData.picture[0].name,
-      filetype: formData.picture[0].type,
+      filename: imageData.name,
+      filetype: imageData.type,
     })
 
-    await useUploadtoS3(formData.picture[0], signeRequest)
+    await useUploadtoS3(imageData, signeRequest)
 
     const payload = {
       name: formData.name,
@@ -37,17 +36,17 @@ const CreatePopup: React.FC<Props> = ({ onClosePopup }) => {
     }
 
     const workout = await createWorkout(payload)
-
-    console.log(workout)
+    if (workout) {
+      onClosePopup()
+    }
   }
 
   const onCancel = () => {
-    console.log('cancle')
     onClosePopup()
   }
 
   const onReset = () => {
-    console.log('Reset')
+    //TODO
   }
 
   return (
@@ -71,7 +70,7 @@ const CreatePopup: React.FC<Props> = ({ onClosePopup }) => {
           value={selected}
           onChange={setSelected}
         />
-        <ImageUpload register={register} />
+        <ImageUpload onImageChange={setImageData} />
       </div>
     </Popup>
   )
